@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue入门</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div @click="handleClick">{{content}}</div>
+    </div>
+    
+    <script>
+        new Vue({
+            el:"#root",
+            data: {
+                msg: "Hello Vue!",
+                content: "hello"
+            },
+            methods: {
+                handleClick: function (){
+                   this.content = "world"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
