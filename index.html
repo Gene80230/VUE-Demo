@@ -9,20 +9,27 @@
         </style>
     </head>
     <body>
-
         <div id="root">
             <div>
                 <input v-model="inputValue"/>
                 <button @click="handleClick">提交</button>
             </div>
             <ul>
-                <li v-for="(item,index) of list" :key="index">
-                    {{item}}
-                </li>
+                <todo-item v-for="(item, index) of list"
+                    :key="index"
+                    :content="item"
+                ></todo-item>   
             </ul>
         </div>
 
         <script>
+
+            Vue.component('todo-item',{
+                props: ['content'],
+                template: '<li >{{content}}</li>'
+            })
+
+
            new Vue({
                el: "#root",
                data:{
