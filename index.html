@@ -4,33 +4,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> 计算属性与监听器 </title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            ul,ol{list-style:none;}
+        </style>
     </head>
     <body>
 
         <div id="root">
-            姓：<input v-model="firstName" />
-            名：<input v-model="lastName" />
-            <div>{{fullName}}</div>
-            <div>{{count}}</div>
+            <div v-show="show">hello world</div>
+            <button @click="handleClick">toggle</button>
+            <ul>
+                <li v-for="(item, index) of list" :key="index">{{item}}</li>
+            </ul>
         </div>
 
         <script>
            new Vue({
                el: "#root",
                data: {
-                   firstName: '',
-                   lastName: '',
-                   count: 0
+                   show: true,
+                   list: [1, 1, 3]
                },
-               computed: {
-                   fullName: function(){
-                       return this.firstName + ' ' + this.lastName
-                   }
-               },
-               watch: {
-                   fullName: function(){
-                       this.count++
-                   }
+               methods:{
+                handleClick:function(){
+                    this.show = !this.show
+                }
                }
            })
         </script>
